@@ -4808,10 +4808,10 @@ async def _main() -> None:
 
         # Warm entity cache — StringSession has no persistent cache,
         # so fetch all dialogs once to populate it
-        print("Warming entity cache...")
+        print("Warming entity cache...", file=sys.stderr)
         await client.get_dialogs()
 
-        print("Telegram client started. Running MCP server...")
+        print("Telegram client started. Running MCP server...", file=sys.stderr)
         # Use the asynchronous entrypoint instead of mcp.run()
         await mcp.run_stdio_async()
     except Exception as e:

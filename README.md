@@ -29,7 +29,7 @@ As you can see, the AI can seamlessly interact with your Telegram account, retri
 
 ---
 
-A full-featured Telegram integration for Claude, Cursor, and any MCP-compatible client, powered by [Telethon](https://docs.telethon.dev/) and the [Model Context Protocol (MCP)](https://modelcontextprotocol.io/). This project lets you interact with your Telegram account programmatically, automating everything from messaging to group management.
+A full-featured Telegram integration for Claude, Cursor, OpenClaw, and any MCP-compatible client, powered by [Telethon](https://docs.telethon.dev/) and the [Model Context Protocol (MCP)](https://modelcontextprotocol.io/). This project lets you interact with your Telegram account programmatically, automating everything from messaging to group management.
 
 
 ---
@@ -284,6 +284,36 @@ Edit your Claude desktop config (e.g. `~/Library/Application Support/Claude/clau
   }
 }
 ```
+
+### OpenClaw Integration
+
+This fork adds [OpenClaw](https://openclaw.ai) support. OpenClaw connects to the Telegram MCP server via MCPorter, giving the agent full userbot access to Telegram (reading all chats, sending messages, managing groups — from your personal account, not a bot).
+
+**1. Copy the MCPorter config:**
+
+```bash
+cp deploy/mcporter.json ~/.openclaw/workspace/config/mcporter.json
+```
+
+**2. Edit the path** in `mcporter.json` to point to your `telegram-mcp` directory.
+
+**3. Append the agent prompt:**
+
+```bash
+cat deploy/TOOLS-telegram-section.md >> ~/.openclaw/workspace/TOOLS.md
+```
+
+**4. Restart the gateway:**
+
+```bash
+openclaw gateway restart
+```
+
+The agent will automatically discover all 50+ Telegram tools via MCP.
+
+**Watcher + OpenClaw:** The `watcher.py` service works alongside OpenClaw. It watches all chats as a userbot, collects context, and triggers the OpenClaw agent when you type `клав` in any chat. The watcher handles message delivery — the agent just returns text. This lets you invoke the AI in chats where no bot is added.
+
+---
 
 ## 📝 Tool Examples with Code & Output
 

@@ -284,7 +284,7 @@ def ask_openclaw(query: str, chat_id: int) -> str:
     """Отправляет запрос в OpenClaw — переиспользует живую main-сессию (быстро)."""
     chat_context = load_chat_context(chat_id)
     ctx_prefix = f"\n[Контекст из базы данных]\n{chat_context}\n\n" if chat_context else ""
-    context = f"{ctx_prefix}[Запрос из Telegram чата {chat_id}, отвечай кратко как в чате, без лишних слов]: {query}"
+    context = f"{ctx_prefix}[source:watcher] [Запрос из Telegram чата {chat_id}, отвечай кратко как в чате, без лишних слов. НЕ используй send_message — доставкой займётся watcher]: {query}"
 
     # Пробуем переиспользовать живую сессию (без нового процесса)
     session_id = _get_main_session_id()

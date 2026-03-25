@@ -1,0 +1,21 @@
+{
+  "mcpServers": {
+    "telegram": {
+      "command": "uv",
+      "args": [
+        "--directory", "/path/to/telegram-mcp",
+        "run", "main.py"
+      ],
+      "env": {
+        "TELEGRAM_API_ID": "$TELEGRAM_API_ID",
+        "TELEGRAM_API_HASH": "$TELEGRAM_API_HASH",
+        "TELEGRAM_SESSION_NAME": "$TELEGRAM_SESSION_NAME",
+        "TELEGRAM_SESSION_STRING": "$TELEGRAM_SESSION_STRING"
+      },
+      "lifecycle": {
+        "mode": "keep-alive",
+        "idleTimeoutMs": 600000
+      }
+    }
+  }
+}
