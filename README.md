@@ -217,6 +217,8 @@ TELEGRAM_SESSION_STRING=your_session_string_here
 ```
 Get your API credentials at [my.telegram.org/apps](https://my.telegram.org/apps).
 
+> **Note:** `my.telegram.org` may return `ERROR` for some phone numbers or IP addresses. If this happens, try a VPN with a different country IP, ensure your number is in `+7XXXXXXXXXX` format (no spaces or brackets), or try again later — the site is known to be intermittently broken. As a fallback, you can use the API credentials from the open-source [Telegram Desktop](https://github.com/telegramdesktop/tdesktop) client. These keys identify the app, not your account — your account is protected separately via phone + OTP. The only downside is a small risk of rate limiting or session invalidation if Telegram ever revokes those keys.
+
 ---
 
 ## 🐳 Running with Docker
